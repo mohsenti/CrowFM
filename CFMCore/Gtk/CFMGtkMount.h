@@ -13,7 +13,7 @@
 
 class CFMGtkMount : public CFMMount {
 private:
-    GMount *mount;
+    GMount *gMount;
 
     static void onUnMountCallback(GObject *source_object, GAsyncResult *res, gpointer user_data);
 
@@ -35,6 +35,8 @@ public:
     bool canEject() override;
 
     void eject() override;
+
+    virtual string getRootPath() override;
 };
 
 
