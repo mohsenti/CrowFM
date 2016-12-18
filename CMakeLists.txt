@@ -4,7 +4,7 @@ project(CrowFM)
 set(CMAKE_CXX_STANDARD 11)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
-set(SOURCE_FILES main.cpp CFMCore/CFMCore.cpp CFMCore/CFMCore.h CFMCore/CFMCoreTypes.h CFMCore/Gtk/CFMGtkCore.cpp CFMCore/Gtk/CFMGtkCore.h)
+set(SOURCE_FILES main.cpp CFMCore/CFMCore.cpp CFMCore/CFMCore.h CFMCore/CFMCoreTypes.h CFMCore/Gtk/CFMGtkCore.cpp CFMCore/CFMInterfaces.h CFMCore/Gtk/CFMGtkMount.cpp CFMCore/Gtk/CFMGtkMount.h CFMCore/Gtk/CFMGtkDrive.cpp CFMCore/Gtk/CFMGtkDrive.h CFMCore/Gtk/CFMGtkVolume.cpp CFMCore/Gtk/CFMGtkVolume.h)
 add_executable(CrowFM ${SOURCE_FILES})
 
 find_package(PkgConfig REQUIRED)

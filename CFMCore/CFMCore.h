@@ -7,7 +7,9 @@
 
 #include <string>
 #include <vector>
+
 #include "CFMCoreTypes.h"
+#include "CFMInterfaces.h"
 
 using namespace std;
 

@@ -1,12 +1,15 @@
 //
-// Created by mohsen on 12/17/16.
+// Created by mohsen on 12/18/16.
 //
 
-#ifndef CROWFM_CFMGTKCORE_H
-#define CROWFM_CFMGTKCORE_H
+#ifndef CROWFM_CFMGTKMOUNT_H
+#define CROWFM_CFMGTKMOUNT_H
+
 
 #include <gio/gio.h>
+
 #include "../CFMCoreTypes.h"
+#include "../CFMInterfaces.h"
 
 class CFMGtkMount : public CFMMount {
 private:
@@ -34,4 +37,6 @@ public:
     void eject() override;
 };
 
-#endif //CROWFM_CFMGTKCORE_H
+
+
+#endif //CROWFM_CFMGTKMOUNT_H

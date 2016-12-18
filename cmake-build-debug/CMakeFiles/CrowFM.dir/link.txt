@@ -1,1 +1,0 @@
-/tools/bin/c++   -g   CMakeFiles/CrowFM.dir/main.cpp.o CMakeFiles/CrowFM.dir/CFMCore/CFMCore.cpp.o CMakeFiles/CrowFM.dir/CFMCore/Gtk/CFMGtkCore.cpp.o  -o CrowFM -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0 /usr/lib64/libgio-2.0.so 
