@@ -7,26 +7,78 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
+class CFMObject {
+};
+
+class CFMRefCounter {
+private:
+    int refCount;
+public:
+    CFMRefCounter() : refCount(0) {}
+
+    void addRef() { refCount++; }
+
+    bool release() { return --refCount <= 0; }
+};
+
+template<class T>
+class CFMRef {
+private:
+    T *object;
+    CFMRefCounter *refCounter;
+public:
+
+    CFMRef(T *object) : object(object) {
+        refCounter = new CFMRefCounter();
+        refCounter->addRef();
+    }
+
+    CFMRef(const CFMRef<T> &cfmRef) : object(cfmRef.object), refCounter(cfmRef.refCounter) {
+        refCounter->addRef();
+    }
+
+    virtual ~CFMRef() {
+        if (refCounter->release()) {
+            delete object;
+            delete refCounter;
+        }
+    }
+
+    T &operator*() {
+        return *object;
+    }
+
+    T *operator->() {
+        return object;
+    }
+
+};
+
 typedef vector<string> CFMStringList;
 
-typedef struct {
+class CFMDevice : public CFMObject {
+public:
     string name;
-} CFMDevice;
-typedef vector<CFMDevice> CFMDeviceList;
+};
 
-typedef struct {
+typedef vector<CFMRef<CFMDevice>> CFMDeviceList;
+
+class CFMVolume : public CFMObject {
+public:
     string name;
 #ifdef __linux__
     string unix_device;
 #endif
     string root_path;
-} CFMVolume;
-typedef vector<CFMVolume> CFMVolumeList;
+};
 
-class CFMMount {
+typedef vector<CFMRef<CFMVolume>> CFMVolumeList;
+
+class CFMMount : public CFMObject {
 public:
     virtual string getName() = 0;
 
@@ -41,6 +93,6 @@ public:
     virtual void eject() = 0;
 };
 
-typedef vector<CFMMount *> CFMMountList;
+typedef vector<CFMRef<CFMMount>> CFMMountList;
 
 #endif //CROWFM_CFMCORETYPES_H

@@ -23,6 +23,8 @@ string
 -
 vector
 -
+iostream
+-
 
 /home/mohsen/ClionProjects/CrowFM/CFMCore/Gtk/CFMGtkCore.cpp
 ../CFMCoreTypes.h

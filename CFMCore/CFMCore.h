@@ -11,11 +11,13 @@
 
 using namespace std;
 
-class CFMCore {
+class CFMCore: public CFMObject {
 public:
 
     CFMDeviceList getDevices();
+
     CFMVolumeList getVolumes();
+
     CFMMountList getMounts();
 
 };
