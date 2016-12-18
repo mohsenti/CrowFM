@@ -56,6 +56,9 @@ public:
         return object;
     }
 
+    bool isValid() {
+        return object != NULL;
+    }
 };
 
 #endif //CROWFM_CFMCORETYPES_H
