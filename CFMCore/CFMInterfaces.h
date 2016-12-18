@@ -33,8 +33,9 @@ public:
 class CFMVolume : public CFMObject {
 public:
     virtual string getName() = 0;
-
     virtual CFMRef<CFMMount> getMount() = 0;
+    virtual bool canMount() = 0;
+    virtual void mount() = 0;
 };
 
 class CFMMount : public CFMObject {

@@ -12,6 +12,7 @@
 class CFMGtkVolume : public CFMVolume {
 private:
     GVolume *gVolume;
+    static void onMountCallback(GObject *source_object, GAsyncResult *res, gpointer user_data);
 public:
     CFMGtkVolume(GVolume *gVolume);
 
@@ -20,6 +21,10 @@ public:
     virtual string getName() override;
 
     virtual CFMRef<CFMMount> getMount() override;
+
+    virtual bool canMount() override;
+
+    virtual void mount() override;
 };
 
 

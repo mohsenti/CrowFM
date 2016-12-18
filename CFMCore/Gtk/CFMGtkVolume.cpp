@@ -24,3 +24,15 @@ CFMRef<CFMMount> CFMGtkVolume::getMount() {
 
     return CFMRef<CFMMount>(NULL);
 }
+
+void CFMGtkVolume::mount() {
+    g_volume_mount(gVolume, G_MOUNT_MOUNT_NONE, NULL, NULL, CFMGtkVolume::onMountCallback, this);
+}
+
+void CFMGtkVolume::onMountCallback(GObject *source_object, GAsyncResult *res, gpointer user_data) {
+    //Todo:Not implemented yet(CFMGtkVolume::onMountCallback)
+}
+
+bool CFMGtkVolume::canMount() {
+    return g_volume_can_mount(gVolume) == TRUE;
+}

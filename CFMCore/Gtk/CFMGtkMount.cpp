@@ -39,9 +39,9 @@ string CFMGtkMount::getRootPath() {
 }
 
 void CFMGtkMount::onUnMountCallback(GObject *source_object, GAsyncResult *res, gpointer user_data) {
-    //Todo: implement this
+    //Todo:Not implemented yet(CFMGtkMount::onUnMountCallback)
 }
 
 void CFMGtkMount::onEjectCallback(GObject *source_object, GAsyncResult *res, gpointer user_data) {
-    //Todo: implement this
+    //Todo:Not implemented yet(CFMGtkMount::onEjectCallback)
 }
