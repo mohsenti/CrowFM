@@ -1,0 +1,1 @@
+## QT version of core of CrowFM
