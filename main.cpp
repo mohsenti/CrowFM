@@ -3,6 +3,8 @@
 #include "CFMCore/CFMCoreTypes.h"
 #include "CFMCore/CFMCore.h"
 
+#include <include/cef_app.h>
+
 int main() {
     CFMCore core;
     CFMDeviceList mounts = core.getDevices();
