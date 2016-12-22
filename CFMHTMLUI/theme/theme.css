@@ -1,0 +1,21 @@
+#main {
+    padding: 8px;
+}
+
+.dropdown > a {
+    text-decoration: none;
+    color: black;
+    cursor: default;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    user-select: none;
+}
+
+.dropdown > a:hover {
+    text-decoration: none;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    user-select: none;
+}
+
+#main-menu .dropdown {
+    padding-right: 8px;
+}
