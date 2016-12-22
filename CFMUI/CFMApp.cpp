@@ -35,7 +35,7 @@ void CFMApp::OnContextInitialized() {
             CefCommandLine::GetGlobalCommandLine();
     url = command_line->GetSwitchValue("url");
     if (url.empty())
-        url = "file://../CFMHTMLUI/index.htm";
+        url = "file://../CFMHTMLUI/index.html";
 
     // Create the first browser window.
     CefBrowserHost::CreateBrowser(window_info, handler.get(), url,
