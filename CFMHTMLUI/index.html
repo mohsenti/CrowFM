@@ -1,10 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>HELLO WORLD HTML UI</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="3rdParties/jquery/jquery.js"></script>
+    <script src="3rdParties/bootstrap/js/bootstrap.min.js"></script>
+    <link href="3rdParties/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link href="theme/theme.css" rel="stylesheet"/>
+
+    <title>Crow File Manager</title>
 </head>
 <body>
+<div id="main">
+    <div id="main-menu">
+        <div class="dropdown pull-left">
+            <a class="dropdown-toggle" id="file-dropdown" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                File
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">New Tab</a></li>
+                <li><a href="#">New Window</a></li>
+                <li role="separator" class="divider">&nbsp;</li>
+                <li><a href="#">Create Folder</a></li>
+                <li><a href="#">Create Document</a></li>
+            </ul>
+        </div>
 
+        <div class="dropdown pull-left">
+            <a class="dropdown-toggle" id="edit-dropdown" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                Edit
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Cut</a></li>
+                <li><a href="#">Copy</a></li>
+                <li><a href="#">Paste</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown pull-left">
+            <a class="dropdown-toggle" id="view-dropdown" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                View
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#"> <span class="glyphicon glyphicon-refresh">&nbsp;</span> Reload</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown pull-left">
+            <a class="dropdown-toggle" id="go-dropdown" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                Go
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#"> <span class="glyphicon glyphicon-arrow-up">&nbsp;</span> Up </a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown pull-left">
+            <a class="dropdown-toggle" id="help-dropdown" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                Help
+            </a>
+            <ul class="dropdown-menu">
+
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
 </html>
