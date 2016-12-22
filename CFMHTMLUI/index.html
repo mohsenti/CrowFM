@@ -16,7 +16,7 @@
     <script>
         $(document).ready(function () {
             $(window).resize(function () {
-                var $toolbar =  $("#toolbar");
+                var $toolbar = $("#toolbar");
                 $("#main-content").height($(window).height() - $toolbar.offset().top - $toolbar.height() - 20);
             });
 
@@ -83,7 +83,7 @@
 
             </ul>
         </div>
-        <div class="clearfix"/>
+        <div class="clearfix"></div>
     </div>
     <div id="toolbar">
         <div><span class="glyphicon glyphicon-chevron-left"></span> Back</div>
@@ -95,9 +95,33 @@
             <div class="title">
                 Directories TreeView
             </div>
+            <div class="treeView">
+                <ul>
+                    <li class="treeItem">
+                        <div><span class="glyphicon glyphicon-chevron-down"></span>Root</div>
+                        <ul>
+                            <li>
+                                <div><span class="glyphicon glyphicon-chevron-right"></span>Child</div>
+                                <ul>
+                                    <li>
+                                        <div><span class="glyphicon"></span>Child</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div id="center-container">
-
+            <div class="icon-box">
+                <div class="icon">
+                    <img src="">
+                </div>
+                <div>
+                    File.exe
+                </div>
+            </div>
         </div>
     </div>
 </div>

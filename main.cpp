@@ -49,6 +49,7 @@ int main(int argc, char *argv[]) {
     XSetIOErrorHandler(XIOErrorHandlerImpl);
 
     CefSettings settings;
+    settings.single_process = True;
 
     CefRefPtr<CFMApp> app(new CFMApp);
 
