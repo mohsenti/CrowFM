@@ -29,7 +29,7 @@ namespace {
 }  // namespace
 
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
 //    CFMCore core;
 //    CFMDeviceList mounts = core.GetDevices();
 //    for (CFMDeviceList::iterator it = mounts.begin(); it != mounts.end(); it++) {
@@ -37,39 +37,25 @@ int main(int argc, char* argv[]) {
 //    }
 //    return 0;
 
-    // Provide CEF with command-line arguments.
     CefMainArgs main_args(argc, argv);
 
-    // CEF applications have multiple sub-processes (render, plugin, GPU, etc)
-    // that share the same executable. This function checks the command-line and,
-    // if this is a sub-process, executes the appropriate logic.
     int exit_code = CefExecuteProcess(main_args, NULL, NULL);
     if (exit_code >= 0) {
         // The sub-process has completed so return here.
         return exit_code;
     }
 
-    // Install xlib error handlers so that the application won't be terminated
-    // on non-fatal errors.
     XSetErrorHandler(XErrorHandlerImpl);
     XSetIOErrorHandler(XIOErrorHandlerImpl);
 
-    // Specify CEF global settings here.
     CefSettings settings;
 
-    // SimpleApp implements application-level callbacks for the browser process.
-    // It will create the first browser instance in OnContextInitialized() after
-    // CEF has initialized.
     CefRefPtr<CFMApp> app(new CFMApp);
 
-    // Initialize CEF for the browser process.
     CefInitialize(main_args, settings, app.get(), NULL);
 
-    // Run the CEF message loop. This will block until CefQuitMessageLoop() is
-    // called.
     CefRunMessageLoop();
 
-    // Shut down CEF.
     CefShutdown();
 
     return 0;
