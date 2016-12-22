@@ -15,6 +15,9 @@ void CFMApp::OnContextInitialized() {
     CEF_REQUIRE_UI_THREAD();
 
     CefWindowInfo window_info;
+    //Set window size
+    window_info.width = 600;
+    window_info.height = 400;
 
 #if defined(OS_WIN)
     window_info.SetAsPopup(NULL, "CFM");
