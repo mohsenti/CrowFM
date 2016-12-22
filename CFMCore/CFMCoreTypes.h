@@ -20,9 +20,9 @@ private:
 public:
     CFMRefCounter() : refCount(0) {}
 
-    void addRef() { refCount++; }
+    void AddRef() { refCount++; }
 
-    bool release() { return --refCount <= 0; }
+    bool Release() { return --refCount <= 0; }
 };
 
 template<class T>
@@ -34,15 +34,15 @@ public:
 
     CFMRef(T *object) : object(object) {
         refCounter = new CFMRefCounter();
-        refCounter->addRef();
+        refCounter->AddRef();
     }
 
     CFMRef(const CFMRef<T> &cfmRef) : object(cfmRef.object), refCounter(cfmRef.refCounter) {
-        refCounter->addRef();
+        refCounter->AddRef();
     }
 
     virtual ~CFMRef() {
-        if (refCounter->release()) {
+        if (refCounter->Release()) {
             delete object;
             delete refCounter;
         }
@@ -56,7 +56,7 @@ public:
         return object;
     }
 
-    bool isValid() {
+    bool IsValid() {
         return object != NULL;
     }
 };

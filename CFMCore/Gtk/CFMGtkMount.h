@@ -24,19 +24,19 @@ public:
 
     virtual ~CFMGtkMount();
 
-    string getName() override;
+    string GetName() override;
 
-    string getMountPoint() override;
+    string GetMountPoint() override;
 
-    bool canUnMount() override;
+    bool CanUnMount() override;
 
-    void unMount() override;
+    void UnMount() override;
 
-    bool canEject() override;
+    bool CanEject() override;
 
-    void eject() override;
+    void Eject() override;
 
-    virtual string getRootPath() override;
+    virtual string GetRootPath() override;
 };
 
 

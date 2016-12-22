@@ -16,11 +16,11 @@ using namespace std;
 class CFMCore: public CFMObject {
 public:
 
-    CFMDeviceList getDevices();
+    CFMDeviceList GetDevices();
 
-    CFMVolumeList getVolumes();
+    CFMVolumeList GetVolumes();
 
-    CFMMountList getMounts();
+    CFMMountList GetMounts();
 
 };
 

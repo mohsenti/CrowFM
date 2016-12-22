@@ -11,11 +11,11 @@ CFMGtkDrive::~CFMGtkDrive() {
     g_object_unref(gDrive);
 }
 
-string CFMGtkDrive::getName() {
+string CFMGtkDrive::GetName() {
     return g_drive_get_name(gDrive);
 }
 
-CFMVolumeList CFMGtkDrive::getVolumes() {
+CFMVolumeList CFMGtkDrive::GetVolumes() {
     GList *g_volumes = g_drive_get_volumes(gDrive);
 
     CFMVolumeList volumes;
