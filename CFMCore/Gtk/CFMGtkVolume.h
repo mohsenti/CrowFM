@@ -18,13 +18,13 @@ public:
 
     virtual ~CFMGtkVolume();
 
-    virtual string getName() override;
+    virtual string GetName() override;
 
-    virtual CFMRef<CFMMount> getMount() override;
+    virtual CFMRef<CFMMount> GetMount() override;
 
-    virtual bool canMount() override;
+    virtual bool CanMount() override;
 
-    virtual void mount() override;
+    virtual void Mount() override;
 };
 
 

@@ -11,7 +11,7 @@
 
 #include <gio/gio.h>
 
-CFMDeviceList CFMCore::getDevices() {
+CFMDeviceList CFMCore::GetDevices() {
     CFMDeviceList devices;
 
     GVolumeMonitor *g_monitor = g_volume_monitor_get();
@@ -28,7 +28,7 @@ CFMDeviceList CFMCore::getDevices() {
     return devices;
 }
 
-CFMVolumeList CFMCore::getVolumes() {
+CFMVolumeList CFMCore::GetVolumes() {
     GVolumeMonitor *g_monitor = g_volume_monitor_get();
     GList *g_volumes = g_volume_monitor_get_volumes(g_monitor);
 
@@ -43,7 +43,7 @@ CFMVolumeList CFMCore::getVolumes() {
     return volumes;
 }
 
-CFMMountList CFMCore::getMounts() {
+CFMMountList CFMCore::GetMounts() {
     GVolumeMonitor *g_monitor = g_volume_monitor_get();
     GList *g_mounts = g_volume_monitor_get_mounts(g_monitor);
 

@@ -25,38 +25,41 @@ typedef vector<CFMRef<CFMMount>> CFMMountList;
 
 class CFMDrive : public CFMObject {
 public:
-    virtual string getName() = 0;
+    virtual string GetName() = 0;
 
-    virtual CFMVolumeList getVolumes() = 0;
+    virtual CFMVolumeList GetVolumes() = 0;
 };
 
 class CFMVolume : public CFMObject {
 public:
-    virtual string getName() = 0;
-    virtual CFMRef<CFMMount> getMount() = 0;
-    virtual bool canMount() = 0;
-    virtual void mount() = 0;
+    virtual string GetName() = 0;
+
+    virtual CFMRef<CFMMount> GetMount() = 0;
+
+    virtual bool CanMount() = 0;
+
+    virtual void Mount() = 0;
 };
 
 class CFMMount : public CFMObject {
 public:
-    virtual string getName() = 0;
+    virtual string GetName() = 0;
 
-    virtual string getRootPath() = 0;
+    virtual string GetRootPath() = 0;
 
 #ifdef __linux__
 
-    virtual string getMountPoint() = 0;
+    virtual string GetMountPoint() = 0;
 
-    virtual bool canUnMount() = 0;
+    virtual bool CanUnMount() = 0;
 
-    virtual void unMount() = 0;
+    virtual void UnMount() = 0;
 
 #endif
 
-    virtual bool canEject() = 0;
+    virtual bool CanEject() = 0;
 
-    virtual void eject() = 0;
+    virtual void Eject() = 0;
 };
 
 #endif //CROWFM_CFMINTERFACES_H

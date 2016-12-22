@@ -17,9 +17,9 @@ public:
 
     virtual ~CFMGtkDrive();
 
-    string getName() override;
+    string GetName() override;
 
-    CFMVolumeList getVolumes() override;
+    CFMVolumeList GetVolumes() override;
 };
 
 

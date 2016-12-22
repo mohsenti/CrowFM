@@ -10,31 +10,31 @@ CFMGtkMount::~CFMGtkMount() {
     g_object_unref(gMount);
 }
 
-string CFMGtkMount::getName() {
+string CFMGtkMount::GetName() {
     return g_mount_get_name(gMount);
 }
 
-string CFMGtkMount::getMountPoint() {
+string CFMGtkMount::GetMountPoint() {
     return "";
 }
 
-bool CFMGtkMount::canUnMount() {
+bool CFMGtkMount::CanUnMount() {
     return g_mount_can_unmount(gMount) == TRUE;
 }
 
-void CFMGtkMount::unMount() {
+void CFMGtkMount::UnMount() {
     g_mount_unmount_with_operation(gMount, G_MOUNT_UNMOUNT_NONE, NULL, NULL, CFMGtkMount::onUnMountCallback, this);
 }
 
-bool CFMGtkMount::canEject() {
+bool CFMGtkMount::CanEject() {
     return g_mount_can_eject(gMount) == TRUE;
 }
 
-void CFMGtkMount::eject() {
+void CFMGtkMount::Eject() {
     g_mount_eject_with_operation(gMount, G_MOUNT_UNMOUNT_NONE, NULL, NULL, CFMGtkMount::onEjectCallback, this);
 }
 
-string CFMGtkMount::getRootPath() {
+string CFMGtkMount::GetRootPath() {
     return g_file_get_path(g_mount_get_root(gMount));
 }
 

@@ -12,11 +12,11 @@ CFMGtkVolume::~CFMGtkVolume() {
     g_object_unref(gVolume);
 }
 
-string CFMGtkVolume::getName() {
+string CFMGtkVolume::GetName() {
     return g_volume_get_name(gVolume);
 }
 
-CFMRef<CFMMount> CFMGtkVolume::getMount() {
+CFMRef<CFMMount> CFMGtkVolume::GetMount() {
     GMount *mount = g_volume_get_mount(gVolume);
     if (mount) {
         return CFMRef<CFMMount>(new CFMGtkMount(mount));
@@ -25,7 +25,7 @@ CFMRef<CFMMount> CFMGtkVolume::getMount() {
     return CFMRef<CFMMount>(NULL);
 }
 
-void CFMGtkVolume::mount() {
+void CFMGtkVolume::Mount() {
     g_volume_mount(gVolume, G_MOUNT_MOUNT_NONE, NULL, NULL, CFMGtkVolume::onMountCallback, this);
 }
 
@@ -33,6 +33,6 @@ void CFMGtkVolume::onMountCallback(GObject *source_object, GAsyncResult *res, gp
     //Todo:Not implemented yet(CFMGtkVolume::onMountCallback)
 }
 
-bool CFMGtkVolume::canMount() {
+bool CFMGtkVolume::CanMount() {
     return g_volume_can_mount(gVolume) == TRUE;
 }
