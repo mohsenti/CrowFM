@@ -125,6 +125,7 @@ body {
 .icon-box .icon {
     width: 45px;
     height: 60px;
+    display: inline-block;
 }
 
 .icon-box .icon img {
