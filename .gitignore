@@ -1,4 +1,12 @@
 .directory
 .idea/workspace.xml
 cmake-build-debug
-CEFModule
+CEFModule/include
+CEFModule/Resources
+CEFModule/linux/*
+!CEFModule/linux/readme.md
+CEFModule/windows/*
+!CEFModule/windows/readme.md
+CEFModule/macos/*
+!CEFModule/macos/readme.md
+!.gitignore
