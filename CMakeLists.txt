@@ -1,7 +1,16 @@
 cmake_minimum_required(VERSION 3.6)
 project(CrowFM)
 
-include("cmake/macro.cmake")
+# Determine the platform.
+if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+    set(OS_MACOSX 1)
+    set(OS_POSIX 1)
+elseif ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+    set(OS_LINUX 1)
+    set(OS_POSIX 1)
+elseif ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
+    set(OS_WINDOWS 1)
+endif ()
 
 set(CMAKE_CXX_STANDARD 11)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
@@ -15,23 +24,55 @@ include_directories(${GTK3_INCLUDE_DIRS})
 link_directories(${GTK3_LIBRARY_DIRS})
 target_link_libraries(CrowFM ${GTK3_LIBRARIES})
 
-
 find_package(GIO REQUIRED)
-if(GIO_FOUND)
+if (GIO_FOUND)
     include_directories(${GIO_INCLUDE_DIR})
     target_link_libraries(CrowFM ${GIO_LIBRARIES})
-endif(GIO_FOUND)
+endif (GIO_FOUND)
 
-find_package(CEF REQUIRED)
-if(CEF_FOUND)
-    MESSAGE(${CEF_INCLUDE_DIRECTORY})
-    COPY_FILES(CrowFM "${CEF_RESOURCES_DIR}" "${CMAKE_BINARY_DIR}")
-    include_directories(${CEF_INCLUDE_DIRECTORY})
-    target_link_libraries(CrowFM ${CEF_LIBRARIES})
-endif(CEF_FOUND)
+find_package(X11 REQUIRED)
+if (X11_FOUND)
+    include_directories(${X11_INCLUDE_DIR})
+    target_link_libraries(CrowFM ${X11_LIBRARIES})
+endif (X11_FOUND)
 
-find_package ( X11 REQUIRED )
-if ( X11_FOUND )
-    include_directories ( ${X11_INCLUDE_DIR} )
-    target_link_libraries (CrowFM ${X11_LIBRARIES} )
-endif ( X11_FOUND )
+include(CEFModule/macros.cmake)
+
+SET(CEFModule "${CMAKE_SOURCE_DIR}/CEFModule")
+
+include_directories("${CEFModule}")
+
+if (OS_LINUX)
+    # List of CEF binary files.
+    set(CEF_BINARY_FILES
+            chrome-sandbox
+            libcef.so
+            natives_blob.bin
+            snapshot_blob.bin
+            )
+
+    # List of CEF resource files.
+    set(CEF_RESOURCE_FILES
+            cef.pak
+            cef_100_percent.pak
+            cef_200_percent.pak
+            cef_extensions.pak
+            devtools_resources.pak
+            icudtl.dat
+            locales
+            )
+    SET(CEF_RESOURCE_DIR "${CEFModule}/Resources")
+    SET(CEF_BINARY_DIR "${CEFModule}/linux")
+
+    # Executable target.
+    find_library(CEF_LIB libcef.so PATHS ${CMAKE_BINARY_DIR})
+    find_library(CEF_LIB_WRAPPER libcef_dll_wrapper.a PATHS "${CEF_BINARY_DIR}")
+    target_link_libraries(CrowFM ${CEF_LIB} ${CEF_LIB_WRAPPER})
+
+    # Set SUID permissions on the chrome-sandbox target.
+    SET_LINUX_SUID_PERMISSIONS(CrowFM "${CMAKE_BINARY_DIR}/chrome-sandbox")
+endif ()
+
+# Copy binary and resource files to the target output directory.
+COPY_FILES(CrowFM "${CEF_BINARY_FILES}" "${CEF_BINARY_DIR}" "${CMAKE_BINARY_DIR}")
+COPY_FILES(CrowFM "${CEF_RESOURCE_FILES}" "${CEF_RESOURCE_DIR}" "${CMAKE_BINARY_DIR}")
