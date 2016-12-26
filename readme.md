@@ -5,7 +5,7 @@
 CrowFM is a cross platform file manager.
 
 ##How to build
-**note : currently only linux os supported.**
+**note : currently only linux os is supported.**
 
 1 - Download Chromium Embedded Framework(CEF) and build it
 
