@@ -5,12 +5,18 @@
 CrowFM is a cross platform file manager.
 
 ##How to build
+**note : currently only linux os supported.**
 
 1 - Download Chromium Embedded Framework(CEF) and build it
 
 2 - Create CEFModule directory in source
  
 3 - Create OS directory in CEFModule
+
+**note : OS directory name must be** 
+* **windows for Windows**
+* **linux for linux**
+* **macos for MacOS**
 
 4 - Copy CEF Resources directory to CEFModule
  
@@ -25,3 +31,4 @@ CrowFM is a cross platform file manager.
 9 - Using cmake to generate Makefiles
 
 10 - Using make to make executable
+
